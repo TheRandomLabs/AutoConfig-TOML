@@ -1,0 +1,27 @@
+plugins {
+	id "fabric-loom" version "0.5-SNAPSHOT"
+}
+
+ext {
+	commonGradleBranch = "master"
+	yarnMappings = "1.16.4+build.7"
+	loaderVersion = "0.10.8"
+	fabricAPIVersion = "0.28.1+1.16"
+	clothConfigVersion = "5.0.0"
+	autoconfigVersion = "3.3.1"
+	includeClothConfig = false
+	nightConfigVersion = "3.6.3"
+}
+
+apply from: "https://raw.githubusercontent.com/TheRandomLabs/Common-Gradle/${project.commonGradleBranch}/fabric/1.16.4.gradle"
+
+version = "1.0.0"
+group = "com.therandomlabs.autoconfigtoml"
+archivesBaseName = "autoconfigtoml"
+
+dependencies {
+	modImplementation "com.electronwill.night-config:core:${project.nightConfigVersion}"
+	include "com.electronwill.night-config:core:${project.nightConfigVersion}"
+	modImplementation "com.electronwill.night-config:toml:${project.nightConfigVersion}"
+	include "com.electronwill.night-config:toml:${project.nightConfigVersion}"
+}
