@@ -84,8 +84,8 @@ repositories {
 dependencies {
 	//...
 
-	modImplementation "com.github.TheRandomLabs:AutoConfig-TOML:3.x.x-fabric-SNAPSHOT"
-	include "com.github.TheRandomLabs.AutoConfig-TOML:3.x.x-fabric-SNAPSHOT"
+	modImplementation "com.github.TheRandomLabs:AutoConfig-TOML:autoconfig-3.x.x-fabric-SNAPSHOT"
+	include "com.github.TheRandomLabs.AutoConfig-TOML:autoconfig-3.x.x-fabric-SNAPSHOT"
 }
 ```
 
