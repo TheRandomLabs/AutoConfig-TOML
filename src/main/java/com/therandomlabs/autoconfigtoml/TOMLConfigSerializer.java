@@ -182,9 +182,9 @@ public final class TOMLConfigSerializer<T extends ConfigData> implements ConfigS
 	) {
 		this.configClass = configClass;
 		final String path = configClass.isAnnotationPresent(Path.class) ?
-				configClass.getAnnotation(Path.class).value() : definition.name();
+				configClass.getAnnotation(Path.class).value() : definition.name() + ".toml";
 		this.fileConfig = CommentedFileConfig.of(
-				FabricLoader.getInstance().getConfigDir().resolve(path + ".toml")
+				FabricLoader.getInstance().getConfigDir().resolve(path)
 		);
 	}
 
