@@ -84,6 +84,16 @@ repositories {
 dependencies {
 	//...
 
+	modImplementation("me.shedaniel.cloth:config-2:${project.clothConfigVersion}") {
+		exclude(module: "fabric-api")
+	}
+	include "me.shedaniel.cloth:config-2:${project.clothConfigVersion}"
+
+	modImplementation("me.sargunvohra.mcmods:autoconfig1u:${project.autoConfigVersion}") {
+		exclude(module: "fabric-api")
+	}
+	include "me.sargunvohra.mcmods:autoconfig1u:${project.autoConfigVersion}"
+
 	modImplementation "com.github.TheRandomLabs:AutoConfig-TOML:autoconfig-3.x.x-fabric-SNAPSHOT"
 	include "com.github.TheRandomLabs.AutoConfig-TOML:autoconfig-3.x.x-fabric-SNAPSHOT"
 }
