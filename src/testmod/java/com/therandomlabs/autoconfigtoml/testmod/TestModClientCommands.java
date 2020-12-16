@@ -1,4 +1,4 @@
-package com.therandomlabs.autoconfigtoml.test;
+package com.therandomlabs.autoconfigtoml.testmod;
 
 import com.mojang.brigadier.CommandDispatcher;
 import io.github.cottonmc.clientcommands.ClientCommandPlugin;

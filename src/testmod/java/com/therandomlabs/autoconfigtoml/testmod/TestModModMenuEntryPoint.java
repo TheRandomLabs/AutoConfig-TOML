@@ -1,4 +1,4 @@
-package com.therandomlabs.autoconfigtoml.test;
+package com.therandomlabs.autoconfigtoml.testmod;
 
 import io.github.prospector.modmenu.api.ConfigScreenFactory;
 import io.github.prospector.modmenu.api.ModMenuApi;

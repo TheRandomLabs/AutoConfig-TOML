@@ -21,12 +21,12 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.therandomlabs.autoconfigtoml.test.client.command;
+package com.therandomlabs.autoconfigtoml.testmod.client.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.therandomlabs.autoconfigtoml.test.TestMod;
+import com.therandomlabs.autoconfigtoml.testmod.TestMod;
 import io.github.cottonmc.clientcommands.CottonClientCommandSource;
 import net.minecraft.text.TranslatableText;
 

@@ -1,7 +1,7 @@
-package com.therandomlabs.autoconfigtoml.test;
+package com.therandomlabs.autoconfigtoml.testmod;
 
 import com.therandomlabs.autoconfigtoml.TOMLConfigSerializer;
-import com.therandomlabs.autoconfigtoml.test.command.TestModConfigReloadCommand;
+import com.therandomlabs.autoconfigtoml.testmod.command.TestModConfigReloadCommand;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;

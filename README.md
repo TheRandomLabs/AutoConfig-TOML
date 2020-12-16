@@ -68,7 +68,7 @@ available:
 ## Usage
 
 `TOMLConfigSerializer` can be used just like any other `ConfigSerializer` for AutoConfig.
-Example usage can be found in the [test mod](https://github.com/TheRandomLabs/AutoConfig-TOML/blob/3.x.x-fabric/src/testmod).
+Example usage can be found in the [test mod](https://github.com/TheRandomLabs/AutoConfig-TOML/tree/autoconfig-3.x.x-fabric/src/testmod).
 
 ### Using with Gradle
 

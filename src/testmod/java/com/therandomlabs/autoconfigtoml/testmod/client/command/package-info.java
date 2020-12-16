@@ -22,6 +22,6 @@
  */
 
 /**
- * Client-sided classes for the AutoConfig-TOML test mod.
+ * Client-sided command-related classes for the AutoConfig-TOML test mod.
  */
-package com.therandomlabs.autoconfigtoml.test.client;
+package com.therandomlabs.autoconfigtoml.testmod.client.command;

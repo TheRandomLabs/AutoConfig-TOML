@@ -1,4 +1,4 @@
-package com.therandomlabs.autoconfigtoml.test;
+package com.therandomlabs.autoconfigtoml.testmod;
 
 import com.electronwill.nightconfig.core.conversion.Path;
 import com.electronwill.nightconfig.core.conversion.SpecIntInRange;

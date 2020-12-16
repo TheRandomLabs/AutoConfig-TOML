@@ -16,13 +16,13 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.therandomlabs.autoconfigtoml.test.TestMod"
+			"com.therandomlabs.autoconfigtoml.testmod.TestMod"
 		],
 		"modmenu": [
-			"com.therandomlabs.autoconfigtoml.test.TestModModMenuEntryPoint"
+			"com.therandomlabs.autoconfigtoml.testmod.TestModModMenuEntryPoint"
 		],
 		"cotton-client-commands": [
-			"com.therandomlabs.autoconfigtoml.test.TestModClientCommands"
+			"com.therandomlabs.autoconfigtoml.testmod.TestModClientCommands"
 		]
 	},
 	"mixins": [],
