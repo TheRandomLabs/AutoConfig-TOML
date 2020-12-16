@@ -49,6 +49,7 @@ import com.electronwill.nightconfig.core.conversion.Converter;
 import com.electronwill.nightconfig.core.conversion.ForceBreakdown;
 import com.electronwill.nightconfig.core.conversion.InvalidValueException;
 import com.electronwill.nightconfig.core.conversion.ObjectConverter;
+import com.electronwill.nightconfig.core.conversion.Path;
 import com.electronwill.nightconfig.core.conversion.SpecDoubleInRange;
 import com.electronwill.nightconfig.core.conversion.SpecEnum;
 import com.electronwill.nightconfig.core.conversion.SpecFloatInRange;
@@ -87,20 +88,20 @@ import org.apache.logging.log4j.message.ParameterizedMessage;
  * In addition, NightConfig's {@code Spec*} annotations are supported, and invalid values
  * are automatically reset to the defaults.
  * <p>
- * Moreover, property field names are automatically converted to lower_snake_case TOML keys, and
- * {@link com.electronwill.nightconfig.core.conversion.Path} annotations may be
- * utilised to manually specify TOML property keys, which are not subject to this conversion.
- * comments for properties.
+ *  Moreover, property field names are automatically converted to lower_snake_case TOML keys, and
+ * {@link Path} annotations may be utilised to manually specify TOML property keys, which are not
+ * subject to this conversion.
  * <p>
- * Furthermore, comments for categories and configuration files may be specified through the use of
- * {@link Comment}, and default, minimum and maximum values are automatically appended to the
- * comments.
+ * A {@link Path} annotation may also be used to specify the path of a configuration file relative
+ * to the configuration directory.
+ * <p>
+ * Furthermore, comments for properties, categories and configuration files may be specified through
+ * the use of {@link Comment}, and by default, minimum and maximum values are automatically appended
+ * to the comments.
  * <p>
  * If a reference to the {@code TOMLConfigSerializer} is stored, {@link #getConfig()} may be used
  * to retrieve the configuration object, and {@link #reloadFromDisk()} may be used to reload the
  * configuration from disk.
- *
- * @param <T> the configuration type.
  */
 @SuppressWarnings("ALL")
 public final class TOMLConfigSerializer<T extends ConfigData> implements ConfigSerializer<T> {
@@ -178,9 +179,9 @@ public final class TOMLConfigSerializer<T extends ConfigData> implements ConfigS
 			me.shedaniel.autoconfig1u.annotation.Config definition, Class<T> configClass
 	) {
 		this.configClass = configClass;
-		this.fileConfig = CommentedFileConfig.of(
-				FMLPaths.CONFIGDIR.get().resolve(definition.name() + ".toml")
-		);
+		final String path = configClass.isAnnotationPresent(Path.class) ?
+				configClass.getAnnotation(Path.class).value() : definition.name();
+		this.fileConfig = CommentedFileConfig.of(FMLPaths.CONFIGDIR.get().resolve(path + ".toml"));
 	}
 
 	/**
