@@ -65,7 +65,7 @@ public final class TestModConfig implements ConfigData {
 		@SpecIntInRange(min = 1, max = 68)
 		@TOMLConfigSerializer.Comment({
 				"Test TOML property.",
-				"This value is automatically rounded down to the nearest integer."
+				"This value is automatically rounded down to the nearest even integer."
 		})
 		@ConfigEntry.Gui.Tooltip
 		public int testTOMLProperty = 66;
