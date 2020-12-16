@@ -8,8 +8,8 @@
 		"TheRandomLabs"
 	],
 	"contact": {
-		"homepage": "https://github.com/TheRandomLabs/AutoConfig-TOML",
-		"sources": "https://github.com/TheRandomLabs/AutoConfig-TOML"
+		"homepage": "https://github.com/TheRandomLabs/AutoConfig-TOML/tree/autoconfig-3.x.x-fabric",
+		"sources": "https://github.com/TheRandomLabs/AutoConfig-TOML/tree/autoconfig-3.x.x-fabric"
 	},
 	"license": "MIT",
 	"icon": "assets/testmod/icon.png",

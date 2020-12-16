@@ -1,0 +1,24 @@
+{
+	"schemaVersion": 1,
+	"id": "autoconfigtoml",
+	"version": "${version}",
+	"name": "AutoConfig-TOML",
+	"description": "A custom TOML ConfigSerializer for AutoConfig that uses NightConfig.",
+	"authors": [
+		"TheRandomLabs"
+	],
+	"contact": {
+		"homepage": "https://github.com/TheRandomLabs/AutoConfig-TOML/tree/autoconfig-3.x.x-fabric",
+		"sources": "https://github.com/TheRandomLabs/AutoConfig-TOML/tree/autoconfig-3.x.x-fabric"
+	},
+	"license": "MIT",
+	"icon": "assets/autoconfigtoml/icon.png",
+	"environment": "*",
+	"entrypoints": {},
+	"mixins": [],
+	"depends": {
+		"fabricloader": ">=0.7.4",
+		"fabric": "*",
+		"minecraft": "1.16.x"
+	}
+}
