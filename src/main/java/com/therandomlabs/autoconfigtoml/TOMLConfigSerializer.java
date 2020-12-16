@@ -180,8 +180,8 @@ public final class TOMLConfigSerializer<T extends ConfigData> implements ConfigS
 	) {
 		this.configClass = configClass;
 		final String path = configClass.isAnnotationPresent(Path.class) ?
-				configClass.getAnnotation(Path.class).value() : definition.name();
-		this.fileConfig = CommentedFileConfig.of(FMLPaths.CONFIGDIR.get().resolve(path + ".toml"));
+				configClass.getAnnotation(Path.class).value() : definition.name() + ".toml";
+		this.fileConfig = CommentedFileConfig.of(FMLPaths.CONFIGDIR.get().resolve(path));
 	}
 
 	/**
