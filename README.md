@@ -100,11 +100,29 @@ repositories {
 dependencies {
 	//...
 
+	compile(fg.deobf("me.shedaniel.cloth:cloth-config-forge:${project.clothConfigVersion}"))
+
+	runtimeOnly(fg.deobf("me.shedaniel:autoconfig1u-forge:${project.autoConfigVersion}")) {
+		transitive = false
+	}
+
+	compileOnly("me.shedaniel:autoconfig1u-forge:${project.autoConfigVersion}") {
+		transitive = false
+	}
+
+	shadow("me.shedaniel:autoconfig1u-forge:${project.autoConfigVersion}") {
+		transitive = false
+	}
+
 	compile "com.github.TheRandomLabs:AutoConfig-TOML:3.x.x-forge-SNAPSHOT"
 	shadow "com.github.TheRandomLabs:AutoConfig-TOML:3.x.x-forge-SNAPSHOT"
 }
 
 shadowJar {
+	relocate(
+			"me.shedaniel.autoconfig1u",
+			"${project.group}.shadowed.me.shedaniel.autoconfig1u"
+	)
 	relocate(
 			"com.therandomlabs.autoconfigtoml",
 			"${project.group}.shadowed.com.therandomlabs.autoconfigtoml"

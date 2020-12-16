@@ -12,6 +12,7 @@ ext {
 	mappingsVersion = "20201212-mixed-1.16.4"
 	clothConfigVersion = "4.1.1"
 	autoConfigVersion = "3.0"
+	shadowAutoConfig = false
 }
 
 buildscript {
