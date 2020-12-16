@@ -33,6 +33,7 @@ import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
 /**
  * The AutoConfig-TOML test mod configuration.
  */
+@SuppressWarnings("CanBeFinal")
 @TOMLConfigSerializer.Comment("AutoConfig-TOML test mod configuration.")
 @Config(name = TestMod.MOD_ID)
 public final class TestModConfig implements ConfigData {
