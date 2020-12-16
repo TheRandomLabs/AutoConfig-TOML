@@ -176,7 +176,6 @@ public final class TOMLConfigSerializer<T extends ConfigData> implements ConfigS
 	 */
 	public TOMLConfigSerializer(
 			me.sargunvohra.mcmods.autoconfig1u.annotation.Config definition, Class<T> configClass
-
 	) {
 		this.configClass = configClass;
 		this.fileConfig = CommentedFileConfig.of(
