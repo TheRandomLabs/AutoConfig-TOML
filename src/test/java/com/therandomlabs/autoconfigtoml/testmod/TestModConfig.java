@@ -3,14 +3,14 @@ package com.therandomlabs.autoconfigtoml.testmod;
 import com.electronwill.nightconfig.core.conversion.Path;
 import com.electronwill.nightconfig.core.conversion.SpecIntInRange;
 import com.therandomlabs.autoconfigtoml.TOMLConfigSerializer;
-import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
-import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
-import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
+import me.shedaniel.autoconfig1u.ConfigData;
+import me.shedaniel.autoconfig1u.annotation.Config;
+import me.shedaniel.autoconfig1u.annotation.ConfigEntry;
 
 /**
  * The AutoConfig-TOML test mod configuration.
  */
-
+@SuppressWarnings("CanBeFinal")
 @TOMLConfigSerializer.Comment("AutoConfig-TOML test mod configuration.")
 @Config(name = TestMod.MOD_ID)
 public final class TestModConfig implements ConfigData {

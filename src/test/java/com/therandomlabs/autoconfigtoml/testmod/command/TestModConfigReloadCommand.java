@@ -21,44 +21,42 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.therandomlabs.autoconfigtoml.testmod.client.command;
+package com.therandomlabs.autoconfigtoml.testmod.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.therandomlabs.autoconfigtoml.testmod.TestMod;
-import io.github.cottonmc.clientcommands.CottonClientCommandSource;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.command.CommandSource;
+import net.minecraft.util.text.StringTextComponent;
 
 /**
- * The command that reloads the AutoConfig-TOML test mod client-sided configuration.
+ * The command that reloads the AutoConfig-TOML test mod configuration.
  */
-public final class TestModClientConfigReloadCommand {
-	private TestModClientConfigReloadCommand() {}
+public final class TestModConfigReloadCommand {
+	private TestModConfigReloadCommand() {}
 
 	/**
-	 * Registers the command that reloads the AutoConfig-TOML test mod client-sided configuration.
+	 * Registers the command that reloads the AutoConfig-TOML test mod configuration.
 	 *
 	 * @param dispatcher the {@link CommandDispatcher}.
-	 * @param dedicated whether the server is dedicated.
 	 */
-	public static void register(
-			CommandDispatcher<CottonClientCommandSource> dispatcher, boolean dedicated
-	) {
+	public static void register(CommandDispatcher<CommandSource> dispatcher) {
 		final String name = TestMod.config().misc.configReloadCommand;
 
 		if (!name.isEmpty()) {
 			dispatcher.register(
-					LiteralArgumentBuilder.<CottonClientCommandSource>literal(name).
+					LiteralArgumentBuilder.<CommandSource>literal(name).
+							requires(source -> source.hasPermissionLevel(4)).
 							executes(context -> execute(context.getSource()))
 			);
 		}
 	}
 
-	private static int execute(CottonClientCommandSource source) {
+	private static int execute(CommandSource source) {
 		TestMod.reloadConfig();
 		source.sendFeedback(
-				new TranslatableText("commands.testmodclientconfigreload.success"), true
+				new StringTextComponent("AutoConfig-TOML test mod configuration reloaded!"), true
 		);
 		return Command.SINGLE_SUCCESS;
 	}

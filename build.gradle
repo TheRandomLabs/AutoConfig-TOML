@@ -1,30 +1,47 @@
-plugins {
-	id "fabric-loom" version "0.5-SNAPSHOT"
-}
-
-ext {
-	commonGradleBranch = "master"
-	testMod = true
-	yarnMappings = "1.16.4+build.7"
-	loaderVersion = "0.10.8"
-	fabricAPIVersion = "0.28.1+1.16"
-	modMenuVersion = "1.14.13+build.19"
-	clothConfigVersion = "4.8.3"
-	autoconfigVersion = "3.3.1"
-	includeClothConfig = false
-	cottonClientCommandsVersion = "1.0.1+1.16-rc1"
-	nightConfigVersion = "3.6.3"
-}
-
-apply from: "https://raw.githubusercontent.com/TheRandomLabs/Common-Gradle/${project.commonGradleBranch}/fabric/1.16.4.gradle"
+apply plugin: "java-library"
 
 version = "1.0.0"
 group = "com.therandomlabs.autoconfigtoml"
 archivesBaseName = "autoconfigtoml"
 
+ext {
+	commonGradleBranch = "master"
+	testMod = true
+	forgeVersion = "35.1.12"
+	mappingsChannel = "snapshot"
+	mappingsVersion = "20201212-mixed-1.16.4"
+	clothConfigVersion = "4.1.1"
+	autoConfigVersion = "3.0"
+}
+
+buildscript {
+	repositories {
+		jcenter()
+
+		mavenCentral()
+
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+
+		maven {
+			url "http://files.minecraftforge.net/maven"
+		}
+	}
+
+	dependencies {
+		classpath group: "net.minecraftforge.gradle", name: "ForgeGradle",
+				version: "3.+", changing: true
+		classpath "com.github.jengelman.gradle.plugins:shadow:4.0.4"
+		classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
+		classpath "gradle.plugin.com.modrinth.minotaur:Minotaur:1.1.0"
+	}
+}
+
+apply from: "https://raw.githubusercontent.com/TheRandomLabs/Common-Gradle/${project.commonGradleBranch}/forge/1.16.4.gradle"
+
 dependencies {
-	modImplementation "com.electronwill.night-config:core:${project.nightConfigVersion}"
-	include "com.electronwill.night-config:core:${project.nightConfigVersion}"
-	modImplementation "com.electronwill.night-config:toml:${project.nightConfigVersion}"
-	include "com.electronwill.night-config:toml:${project.nightConfigVersion}"
+	testCompileOnly("me.shedaniel:autoconfig1u-forge:${project.autoConfigVersion}") {
+		transitive = false
+	}
 }

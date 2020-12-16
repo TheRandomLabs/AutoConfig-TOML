@@ -1,0 +1,22 @@
+modLoader = "javafml"
+loaderVersion = "[32,)"
+license = "MIT"
+issueTrackerURL = "https://github.com/TheRandomLabs/AutoConfig-TOML/issues"
+
+[[mods]]
+modId = "testmod"
+version = "${file.jarVersion}"
+displayName = "AutoConfig-TOML Test Mod"
+displayURL = "https://github.com/TheRandomLabs/AutoConfig-TOML/tree/autoconfig-3.x.x-forge"
+logoFile = "logo.png"
+authors = "TheRandomLabs"
+description = '''
+AutoConfig-TOML Test Mod, a test mod for AutoConfig-TOML.
+'''
+
+[[dependencies.testmod]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.16,1.17)"
+ordering = "NONE"
+side = "BOTH"

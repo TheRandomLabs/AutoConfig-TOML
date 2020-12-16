@@ -2,14 +2,19 @@ package com.therandomlabs.autoconfigtoml.testmod;
 
 import com.therandomlabs.autoconfigtoml.TOMLConfigSerializer;
 import com.therandomlabs.autoconfigtoml.testmod.command.TestModConfigReloadCommand;
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
-import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
+import me.shedaniel.autoconfig1u.AutoConfig;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.fml.ExtensionPoint;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
 
 /**
  * The main class for the AutoConfig-TOML test mod.
  */
-public final class TestMod implements ModInitializer {
+@Mod(TestMod.MOD_ID)
+public final class TestMod {
 	/**
 	 * The AutoConfig-TOML test mod ID.
 	 */
@@ -18,12 +23,25 @@ public final class TestMod implements ModInitializer {
 	private static TOMLConfigSerializer<TestModConfig> serializer;
 
 	/**
-	 * {@inheritDoc}
+	 * Constructs a {@link TestMod} instance.
 	 */
-	@Override
-	public void onInitialize() {
+	public TestMod() {
 		reloadConfig();
-		CommandRegistrationCallback.EVENT.register(TestModConfigReloadCommand::register);
+
+		if (ModList.get().isLoaded("cloth-config")) {
+			ModLoadingContext.get().registerExtensionPoint(
+					ExtensionPoint.CONFIGGUIFACTORY,
+					() -> (mc, screen) -> AutoConfig.getConfigScreen(
+							TestModConfig.class, screen
+					).get()
+			);
+		}
+
+		MinecraftForge.EVENT_BUS.addListener(this::registerCommands);
+	}
+
+	private void registerCommands(RegisterCommandsEvent event) {
+		TestModConfigReloadCommand.register(event.getDispatcher());
 	}
 
 	/**

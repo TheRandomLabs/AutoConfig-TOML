@@ -1,11 +1,11 @@
 # AutoConfig-TOML
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Build](https://jitci.com/gh/TheRandomLabs/AutoConfig-TOML/svg?branch=autoconfig-3.x.x-fabric)](https://jitci.com/gh/TheRandomLabs/AutoConfig-TOML)
+[![Build](https://jitci.com/gh/TheRandomLabs/AutoConfig-TOML/svg?branch=autoconfig-3.x.x-forge)](https://jitci.com/gh/TheRandomLabs/AutoConfig-TOML)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/TheRandomLabs/AutoConfig-TOML.svg)](http://isitmaintained.com/project/TheRandomLabs/AutoConfig-TOML "Average time to resolve an issue")
 
 A custom TOML [ConfigSerializer](https://github.com/shedaniel/AutoConfig/blob/1.16/src/main/java/me/sargunvohra/mcmods/autoconfig1u/serializer/ConfigSerializer.java)
-for [AutoConfig](https://github.com/shedaniel/AutoConfig) that uses
+for [AutoConfig](https://github.com/shedaniel/AutoConfig/tree/1.16-forge) that uses
 [NightConfig](https://github.com/TheElectronWill/night-config).
 
 ## Sponsors
@@ -29,7 +29,7 @@ easy to manage, and of high quality. Check them out here:
 ## Aims
 
 AutoConfig-TOML aims to provide a `ConfigSerializer` for TOML that is slightly better than
-[Toml4jConfigSerializer](https://github.com/shedaniel/AutoConfig/blob/1.16/src/main/java/me/sargunvohra/mcmods/autoconfig1u/serializer/Toml4jConfigSerializer.java),
+[Toml4jConfigSerializer](https://github.com/shedaniel/AutoConfig/blob/1.16-forge/src/main/java/me/shedaniel/autoconfig1u/serializer/Toml4jConfigSerializer.java),
 the TOML `ConfigSerializer` that comes with AutoConfig.
 
 ## Features
@@ -68,11 +68,27 @@ available:
 ## Usage
 
 `TOMLConfigSerializer` can be used just like any other `ConfigSerializer` for AutoConfig.
-Example usage can be found in the [test mod](https://github.com/TheRandomLabs/AutoConfig-TOML/tree/autoconfig-3.x.x-fabric/src/testmod).
+Example usage can be found in the [test mod](https://github.com/TheRandomLabs/AutoConfig-TOML/tree/autoconfig-3.x.x-forge/src/test).
 
 ### Using with Gradle
 
 ```groovy
+buildscript {
+	//...
+
+	dependencies {
+		//...
+		classpath "com.github.jengelman.gradle.plugins:shadow:4.0.4"
+	}
+}
+
+//...
+apply plugin: "com.github.johnrengelman.shadow"
+
+configurations {
+	shadow
+}
+
 repositories {
 	//...
 
@@ -84,8 +100,22 @@ repositories {
 dependencies {
 	//...
 
-	modImplementation "com.github.TheRandomLabs:AutoConfig-TOML:3.x.x-fabric-SNAPSHOT"
-	include "com.github.TheRandomLabs.AutoConfig-TOML:3.x.x-fabric-SNAPSHOT"
+	compile "com.github.TheRandomLabs:AutoConfig-TOML:3.x.x-forge-SNAPSHOT"
+	shadow "com.github.TheRandomLabs:AutoConfig-TOML:3.x.x-forge-SNAPSHOT"
+}
+
+shadowJar {
+	relocate(
+			"com.therandomlabs.autoconfigtoml",
+			"${project.group}.shadowed.com.therandomlabs.autoconfigtoml"
+	)
+
+	setConfigurations([project.configurations.getByName("shadow")])
+	classifier(null)
+}
+
+reobf {
+	shadowJar {}
 }
 ```
 

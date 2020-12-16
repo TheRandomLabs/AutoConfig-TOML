@@ -60,13 +60,13 @@ import com.electronwill.nightconfig.core.io.CharsWrapper;
 import com.electronwill.nightconfig.core.io.ParsingException;
 import com.electronwill.nightconfig.toml.TomlWriter;
 import com.google.common.base.CaseFormat;
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
-import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
-import me.sargunvohra.mcmods.autoconfig1u.ConfigManager;
-import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
-import me.sargunvohra.mcmods.autoconfig1u.serializer.ConfigSerializer;
-import me.sargunvohra.mcmods.autoconfig1u.util.Utils;
-import net.fabricmc.loader.api.FabricLoader;
+import me.shedaniel.autoconfig1u.AutoConfig;
+import me.shedaniel.autoconfig1u.ConfigData;
+import me.shedaniel.autoconfig1u.ConfigManager;
+import me.shedaniel.autoconfig1u.annotation.ConfigEntry;
+import me.shedaniel.autoconfig1u.serializer.ConfigSerializer;
+import me.shedaniel.autoconfig1u.util.Utils;
+import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -75,7 +75,7 @@ import org.apache.logging.log4j.message.ParameterizedMessage;
 /**
  * A {@link ConfigSerializer} for TOML that uses NightConfig.
  * <p>
- * Compared to {@link me.sargunvohra.mcmods.autoconfig1u.serializer.Toml4jConfigSerializer},
+ * Compared to {@link me.shedaniel.autoconfig1u.serializer.Toml4jConfigSerializer},
  * this {@link ConfigSerializer} ensures that {@link ConfigData#validatePostLoad()} is always
  * called and any updated values are written to disk on both serialization and deserialization.
  * As a result, it can be ensured that valid values are always present both in the configuration
@@ -175,12 +175,12 @@ public final class TOMLConfigSerializer<T extends ConfigData> implements ConfigS
 	 * @param configClass a configuration class.
 	 */
 	public TOMLConfigSerializer(
-			me.sargunvohra.mcmods.autoconfig1u.annotation.Config definition, Class<T> configClass
+			me.shedaniel.autoconfig1u.annotation.Config definition, Class<T> configClass
 
 	) {
 		this.configClass = configClass;
 		this.fileConfig = CommentedFileConfig.of(
-				FabricLoader.getInstance().getConfigDir().resolve(definition.name() + ".toml")
+				FMLPaths.CONFIGDIR.get().resolve(definition.name() + ".toml")
 		);
 	}
 
