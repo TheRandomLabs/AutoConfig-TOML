@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018-2020 TheRandomLabs
+ * Copyright (c) 2020 TheRandomLabs
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -40,11 +40,8 @@ public final class TestModClientConfigReloadCommand {
 	 * Registers the command that reloads the AutoConfig-TOML test mod client-sided configuration.
 	 *
 	 * @param dispatcher the {@link CommandDispatcher}.
-	 * @param dedicated whether the server is dedicated.
 	 */
-	public static void register(
-			CommandDispatcher<CottonClientCommandSource> dispatcher, boolean dedicated
-	) {
+	public static void register(CommandDispatcher<CottonClientCommandSource> dispatcher) {
 		final String name = TestMod.config().misc.configReloadCommand;
 
 		if (!name.isEmpty()) {
