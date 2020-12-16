@@ -86,6 +86,7 @@ buildscript {
 apply plugin: "com.github.johnrengelman.shadow"
 
 configurations {
+	nonModDependency
 	shadow
 }
 
@@ -94,6 +95,36 @@ repositories {
 
 	maven {
 		url "https://jitpack.io"
+	}
+}
+
+ext.autoConfigTOMLClassesDir = new File("build/autoconfig-toml")
+
+minecraft {
+	//...
+
+	runs {
+		client {
+			environment "MOD_CLASSES", [
+					sourceSets.main.output.resourcesDir.absolutePath,
+					sourceSets.main.output.classesDirs.asPath,
+					project.autoConfigTOMLClassesDir.absolutePath
+			].join(File.pathSeparator)
+
+			//...
+		}
+
+		server {
+			environment "MOD_CLASSES", [
+					sourceSets.main.output.resourcesDir.absolutePath,
+					sourceSets.main.output.classesDirs.asPath,
+					project.autoConfigTOMLClassesDir.absolutePath
+			].join(File.pathSeparator)
+
+			//...
+		}
+
+		//...
 	}
 }
 
@@ -115,8 +146,21 @@ dependencies {
 	}
 
 	compile "com.github.TheRandomLabs:AutoConfig-TOML:3.x.x-forge-SNAPSHOT"
+	nonModDependency "com.github.TheRandomLabs:AutoConfig-TOML:3.x.x-forge-SNAPSHOT"
 	shadow "com.github.TheRandomLabs:AutoConfig-TOML:3.x.x-forge-SNAPSHOT"
 }
+
+//See: https://github.com/MinecraftForge/ForgeGradle/issues/583
+task extractAutoConfigTOML(type: Copy) {
+	project.autoConfigTOMLClassesDir.delete()
+	project.autoConfigTOMLClassesDir.mkdirs()
+	from zipTree(project.configurations.nonModDependency.find {
+		it.name.startsWith("AutoConfig-TOML")
+	})
+	into project.autoConfigTOMLClassesDir
+}
+
+compileJava.dependsOn(extractAutoConfigTOML)
 
 shadowJar {
 	relocate(
