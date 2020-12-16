@@ -5,7 +5,7 @@
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/TheRandomLabs/AutoConfig-TOML.svg)](http://isitmaintained.com/project/TheRandomLabs/AutoConfig-TOML "Average time to resolve an issue")
 
 A custom TOML [ConfigSerializer](https://github.com/shedaniel/AutoConfig/blob/1.16/src/main/java/me/sargunvohra/mcmods/autoconfig1u/serializer/ConfigSerializer.java)
-for [AutoConfig](https://github.com/shedaniel/AutoConfig) that uses
+for [AutoConfig](https://github.com/shedaniel/AutoConfig/tree/1.16) that uses
 [NightConfig](https://github.com/TheElectronWill/night-config).
 
 ## Sponsors
