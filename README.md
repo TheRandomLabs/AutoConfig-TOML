@@ -77,6 +77,14 @@ repositories {
 	//...
 
 	maven {
+		url "https://dl.bintray.com/shedaniel/cloth-config-2"
+	}
+
+	maven {
+		url "https://dl.bintray.com/shedaniel/autoconfig1u"
+	}
+
+	maven {
 		url "https://jitpack.io"
 	}
 }
