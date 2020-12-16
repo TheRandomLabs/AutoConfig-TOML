@@ -46,6 +46,9 @@ public final class TestModConfig implements ConfigData {
 		@ConfigEntry.Gui.Tooltip
 		public String configReloadCommand = "testmodclientconfigreload";
 
+		/**
+		 * {@inheritDoc}
+		 */
 		@Override
 		public void validatePostLoad() {
 			configReloadCommand = configReloadCommand.trim();
