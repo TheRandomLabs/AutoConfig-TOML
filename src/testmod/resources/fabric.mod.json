@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "testmod",
+	"version": "${version}",
+	"name": "AutoConfig-TOML Test Mod",
+	"description": "Test mod for AutoConfig-TOML.",
+	"authors": [
+		"TheRandomLabs"
+	],
+	"contact": {
+		"homepage": "https://github.com/TheRandomLabs/AutoConfig-TOML",
+		"sources": "https://github.com/TheRandomLabs/AutoConfig-TOML"
+	},
+	"license": "MIT",
+	"icon": "assets/testmod/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.therandomlabs.autoconfigtoml.test.TestMod"
+		],
+		"modmenu": [
+			"com.therandomlabs.autoconfigtoml.test.TestModModMenuEntryPoint"
+		],
+		"cotton-client-commands": [
+			"com.therandomlabs.autoconfigtoml.test.TestModClientCommands"
+		]
+	},
+	"mixins": [],
+	"depends": {
+		"fabricloader": ">=0.7.4",
+		"fabric": "*",
+		"minecraft": "1.16.x"
+	},
+	"suggests": {
+		"cotton-client-commands": "^1.0.0",
+		"modmenu": "*"
+	}
+}

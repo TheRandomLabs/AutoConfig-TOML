@@ -1,0 +1,12 @@
+{
+	"commands.testmodclientconfigreload.success": "AutoConfig-TOML test mod client-sided configuration reloaded!",
+	"text.autoconfig.testmod.title": "AutoConfig-TOML test mod configuration",
+	"text.autoconfig.testmod.category.client": "Client",
+	"text.autoconfig.testmod.option.client.configReloadCommand": "Configuration reload command name",
+	"text.autoconfig.testmod.option.client.configReloadCommand.@Tooltip": "The name of the command that reloads this configuration from disk on the client.",
+	"text.autoconfig.testmod.category.misc": "Miscellaneous",
+	"text.autoconfig.testmod.option.misc.configReloadCommand": "Configuration reload command name",
+	"text.autoconfig.testmod.option.misc.configReloadCommand.@Tooltip": "The name of the command that reloads this configuration from disk.",
+	"text.autoconfig.testmod.option.misc.testTOMLProperty": "Test TOML property",
+	"text.autoconfig.testmod.option.misc.testTOMLProperty.@Tooltip": "Test TOML property."
+}

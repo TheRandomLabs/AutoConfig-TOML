@@ -33,7 +33,6 @@ import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -67,6 +66,7 @@ import me.sargunvohra.mcmods.autoconfig1u.ConfigManager;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.ConfigSerializer;
 import me.sargunvohra.mcmods.autoconfig1u.util.Utils;
+import net.fabricmc.loader.api.FabricLoader;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -93,7 +93,8 @@ import org.apache.logging.log4j.message.ParameterizedMessage;
  * comments for properties.
  * <p>
  * Furthermore, comments for categories and configuration files may be specified through the use of
- * {@link Comment}.
+ * {@link Comment}, and default, minimum and maximum values are automatically appended to the
+ * comments.
  * <p>
  * If a reference to the {@code TOMLConfigSerializer} is stored, {@link #getConfig()} may be used
  * to retrieve the configuration object, and {@link #reloadFromDisk()} may be used to reload the
@@ -172,15 +173,15 @@ public final class TOMLConfigSerializer<T extends ConfigData> implements ConfigS
 	 *
 	 * @param definition a definition.
 	 * @param configClass a configuration class.
-	 * @param configDirectory the directory in which the configuration file should be stored.
 	 */
 	public TOMLConfigSerializer(
-			me.sargunvohra.mcmods.autoconfig1u.annotation.Config definition, Class<T> configClass,
-			Path configDirectory
+			me.sargunvohra.mcmods.autoconfig1u.annotation.Config definition, Class<T> configClass
+
 	) {
 		this.configClass = configClass;
-		this.fileConfig =
-				CommentedFileConfig.of(configDirectory.resolve(definition.name() + ".toml"));
+		this.fileConfig = CommentedFileConfig.of(
+				FabricLoader.getInstance().getConfigDir().resolve(definition.name() + ".toml")
+		);
 	}
 
 	/**
@@ -604,7 +605,7 @@ public final class TOMLConfigSerializer<T extends ConfigData> implements ConfigS
 
 	private static Class<?> findClassInSamePackage(Class<?> clazz, String name) {
 		try {
-			return Class.forName(clazz.getPackageName() + '.' + name);
+			return Class.forName(clazz.getPackage().getName() + '.' + name);
 		} catch (ClassNotFoundException ex) {
 			throw new RuntimeException(ex);
 		}

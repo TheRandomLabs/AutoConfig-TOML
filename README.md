@@ -55,6 +55,7 @@ annotations may be utilised to manually specify TOML property keys, which are no
 
 * Comments for categories and configuration files may be specified through the use of
 `TOMLConfigSerializer.Comment`.
+* Default, minimum and maximum values are automatically appended to the comments.
 
 ### Utility methods
 
@@ -67,9 +68,7 @@ available:
 ## Usage
 
 `TOMLConfigSerializer` can be used just like any other `ConfigSerializer` for AutoConfig.
-For real-world examples, see the [configuration registration](https://github.com/TheRandomLabs/RandomPatches/blob/1.16-fabric/src/main/java/com/therandomlabs/randompatches/RandomPatches.java)
-and [configuration class](https://github.com/TheRandomLabs/RandomPatches/blob/1.16-fabric/src/main/java/com/therandomlabs/randompatches/RPConfig.java)
-for [RandomPatches](https://github.com/TheRandomLabs/RandomPatches/tree/1.16-fabric).
+Example usage can be found in the [test mod](https://github.com/TheRandomLabs/AutoConfig-TOML/blob/3.x.x-fabric/src/testmod).
 
 ### Using with Gradle
 
