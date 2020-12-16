@@ -51,9 +51,14 @@ annotations are supported, and invalid values are automatically reset to the def
 * [Path](https://github.com/TheElectronWill/night-config/blob/master/core/src/main/java/com/electronwill/nightconfig/core/conversion/Path.java)
 annotations may be utilised to manually specify TOML property keys, which are not subject to this conversion.
 
+### Configuration paths
+
+* A `Path` annotation may also be used to specify the path of a configuration file relative to the
+configuration directory.
+
 ### Comments
 
-* Comments for categories and configuration files may be specified through the use of
+* Comments for properties, categories and configuration files may be specified through the use of
 `TOMLConfigSerializer.Comment`.
 * Default, minimum and maximum values are automatically appended to the comments.
 
