@@ -76,7 +76,7 @@ import org.apache.logging.log4j.message.ParameterizedMessage;
 /**
  * A {@link ConfigSerializer} for TOML that uses NightConfig.
  * <p>
- * Compared to {@link me.shedaniel.autoconfig1u.serializer.Toml4jConfigSerializer},
+ * Unlike {@link me.shedaniel.autoconfig1u.serializer.Toml4jConfigSerializer},
  * this {@link ConfigSerializer} ensures that {@link ConfigData#validatePostLoad()} is always
  * called and any updated values are written to disk on both serialization and deserialization.
  * As a result, it can be ensured that valid values are always present both in the configuration
