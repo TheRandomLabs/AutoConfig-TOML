@@ -1,7 +1,7 @@
 # AutoConfig-TOML
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Build](https://jitci.com/gh/TheRandomLabs/AutoConfig-TOML/svg?branch=autoconfig-3.x.x-forge)](https://jitci.com/gh/TheRandomLabs/AutoConfig-TOML)
+![Build](https://github.com/TheRandomLabs/AutoConfig-TOML/workflows/Build/badge.svg?branch=autoconfig-3.x.x-forge)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/TheRandomLabs/AutoConfig-TOML.svg)](http://isitmaintained.com/project/TheRandomLabs/AutoConfig-TOML "Average time to resolve an issue")
 
 A custom TOML [ConfigSerializer](https://github.com/shedaniel/AutoConfig/blob/1.16/src/main/java/me/sargunvohra/mcmods/autoconfig1u/serializer/ConfigSerializer.java)
