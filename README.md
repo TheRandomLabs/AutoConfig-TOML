@@ -8,6 +8,8 @@ A custom TOML [ConfigSerializer](https://github.com/shedaniel/AutoConfig/blob/1.
 for [AutoConfig](https://github.com/shedaniel/AutoConfig/tree/1.16) that uses
 [NightConfig](https://github.com/TheElectronWill/night-config).
 
+AutoConfig-TOML does **not** require Fabric API!
+
 ## Sponsors
 
 I've partnered with BisectHosting! In my experience, their servers are lag-free, easy to manage and
