@@ -9,6 +9,7 @@
 	],
 	"contact": {
 		"homepage": "https://github.com/TheRandomLabs/AutoConfig-TOML/tree/autoconfig-3.x.x-fabric",
+		"issues": "https://github.com/TheRandomLabs/AutoConfig-TOML/issues",
 		"sources": "https://github.com/TheRandomLabs/AutoConfig-TOML/tree/autoconfig-3.x.x-fabric"
 	},
 	"license": "MIT",
