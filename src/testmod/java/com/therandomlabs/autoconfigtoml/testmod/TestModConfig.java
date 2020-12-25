@@ -41,7 +41,7 @@ public final class TestModConfig implements ConfigData {
 		@TOMLConfigSerializer.Comment({
 				"The name of the command that reloads this configuration from disk on the client.",
 				"Set this to an empty string to disable the command.",
-				"Changes to this option are applied when a server is loaded."
+				"Changes to this option are applied after a game restart."
 		})
 		@ConfigEntry.Gui.Tooltip
 		public String configReloadCommand = "testmodclientconfigreload";

@@ -42,7 +42,7 @@ public final class TestModClientConfigReloadCommand {
 	 * @param dispatcher the {@link CommandDispatcher}.
 	 */
 	public static void register(CommandDispatcher<CottonClientCommandSource> dispatcher) {
-		final String name = TestMod.config().misc.configReloadCommand;
+		final String name = TestMod.config().client.configReloadCommand;
 
 		if (!name.isEmpty()) {
 			dispatcher.register(
