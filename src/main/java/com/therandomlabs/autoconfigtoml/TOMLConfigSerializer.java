@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2020 TheRandomLabs
+ * Copyright (c) 2020-2021 TheRandomLabs
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -72,6 +72,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.message.ParameterizedMessage;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 /**
  * A {@link ConfigSerializer} for TOML that uses NightConfig.
@@ -142,6 +143,7 @@ public final class TOMLConfigSerializer<T extends ConfigData> implements ConfigS
 	private final Class<T> configClass;
 	private final CommentedFileConfig fileConfig;
 
+	@Nullable
 	private T config;
 
 	//Yeah, this class is pretty hacky.
@@ -263,7 +265,7 @@ public final class TOMLConfigSerializer<T extends ConfigData> implements ConfigS
 	 * @return this {@link TOMLConfigSerializer}'s configuration.
 	 */
 	public T getConfig() {
-		return config;
+		return config == null ? deserialize() : config;
 	}
 
 	/**

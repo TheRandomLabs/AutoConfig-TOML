@@ -1,4 +1,5 @@
 plugins {
+	id "java-library"
 	id "fabric-loom" version "0.5-SNAPSHOT"
 }
 
@@ -16,11 +17,11 @@ ext {
 	nightConfigVersion = "3.6.3"
 }
 
-apply from: "https://raw.githubusercontent.com/TheRandomLabs/Common-Gradle/${project.commonGradleBranch}/fabric/1.16.4.gradle"
-
-version = "1.0.0"
+version = "1.0.0-fabric"
 group = "com.therandomlabs.autoconfigtoml"
 archivesBaseName = "autoconfigtoml"
+
+apply from: "https://raw.githubusercontent.com/TheRandomLabs/Common-Gradle/${project.commonGradleBranch}/fabric/1.16.4.gradle"
 
 dependencies {
 	modImplementation "com.electronwill.night-config:core:${project.nightConfigVersion}"
