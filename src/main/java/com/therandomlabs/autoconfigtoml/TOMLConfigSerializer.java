@@ -261,7 +261,7 @@ public final class TOMLConfigSerializer<T extends ConfigData> implements ConfigS
 	 * @return this {@link TOMLConfigSerializer}'s configuration.
 	 */
 	public T getConfig() {
-		return config;
+		return config == null ? deserialize() : config;
 	}
 
 	/**
