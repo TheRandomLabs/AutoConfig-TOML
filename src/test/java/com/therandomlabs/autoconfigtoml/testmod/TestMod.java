@@ -54,9 +54,8 @@ public final class TestMod {
 		if (ModList.get().isLoaded("cloth-config")) {
 			ModLoadingContext.get().registerExtensionPoint(
 					ExtensionPoint.CONFIGGUIFACTORY,
-					() -> (mc, screen) -> AutoConfig.getConfigScreen(
-							TestModConfig.class, screen
-					).get()
+					() -> (mc, screen) ->
+							AutoConfig.getConfigScreen(TestModConfig.class, screen).get()
 			);
 		}
 

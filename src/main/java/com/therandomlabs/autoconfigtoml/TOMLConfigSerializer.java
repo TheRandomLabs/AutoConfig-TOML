@@ -23,6 +23,8 @@
 
 package com.therandomlabs.autoconfigtoml;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -69,6 +71,8 @@ import me.shedaniel.autoconfig1u.serializer.ConfigSerializer;
 import me.shedaniel.autoconfig1u.util.Utils;
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.input.BOMInputStream;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.message.ParameterizedMessage;
@@ -220,7 +224,17 @@ public final class TOMLConfigSerializer<T extends ConfigData> implements ConfigS
 		}
 
 		try {
-			try {
+			final File file = fileConfig.getFile();
+
+			try (
+					final BOMInputStream stream = new BOMInputStream(new FileInputStream(file))
+			) {
+				if (stream.hasBOM()) {
+					//https://github.com/TheElectronWill/night-config/issues/67
+					//This only seems to be a problem with LF line endings...
+					FileUtils.write(file, IOUtils.toString(stream, StandardCharsets.UTF_8));
+				}
+
 				fileConfig.load();
 			} catch (ParsingException ex) {
 				logger.error(
