@@ -234,7 +234,10 @@ public final class TOMLConfigSerializer<T extends ConfigData> implements ConfigS
 				if (stream.hasBOM()) {
 					//https://github.com/TheElectronWill/night-config/issues/67
 					//This only seems to be a problem with LF line endings...
-					FileUtils.write(file, IOUtils.toString(stream, StandardCharsets.UTF_8));
+					FileUtils.write(
+							file, IOUtils.toString(stream, StandardCharsets.UTF_8),
+							StandardCharsets.UTF_8
+					);
 				}
 
 				fileConfig.load();
