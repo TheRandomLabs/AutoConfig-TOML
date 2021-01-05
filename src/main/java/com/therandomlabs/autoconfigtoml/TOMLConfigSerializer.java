@@ -189,9 +189,9 @@ public final class TOMLConfigSerializer<T extends ConfigData> implements ConfigS
 		this.configClass = configClass;
 		final String path = configClass.isAnnotationPresent(Path.class) ?
 				configClass.getAnnotation(Path.class).value() : definition.name() + ".toml";
-		this.fileConfig = CommentedFileConfig.of(
+		this.fileConfig = CommentedFileConfig.builder(
 				FabricLoader.getInstance().getConfigDir().resolve(path)
-		);
+		).sync().build();
 	}
 
 	/**
@@ -302,6 +302,7 @@ public final class TOMLConfigSerializer<T extends ConfigData> implements ConfigS
 		moveToFileConfig(config, configClass, fileConfig, defaultConfig);
 		fileConfig.save();
 
+		//We can immediately read the file since we enabled synchronous saving on fileConfig.
 		String string = FileUtils.readFileToString(
 				fileConfig.getFile(), StandardCharsets.UTF_8
 		).trim() + System.lineSeparator();
