@@ -37,24 +37,6 @@ import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
 @TOMLConfigSerializer.Comment("AutoConfig-TOML test mod configuration.")
 @Config(name = TestMod.MOD_ID)
 public final class TestModConfig implements ConfigData {
-	public static final class Client implements ConfigData {
-		@TOMLConfigSerializer.Comment({
-				"The name of the command that reloads this configuration from disk on the client.",
-				"Set this to an empty string to disable the command.",
-				"Changes to this option are applied after a game restart."
-		})
-		@ConfigEntry.Gui.Tooltip
-		public String configReloadCommand = "testmodclientconfigreload";
-
-		/**
-		 * {@inheritDoc}
-		 */
-		@Override
-		public void validatePostLoad() {
-			configReloadCommand = configReloadCommand.trim();
-		}
-	}
-
 	public static final class Misc implements ConfigData {
 		@TOMLConfigSerializer.Comment({
 				"The name of the command that reloads this configuration from disk.",
@@ -85,11 +67,6 @@ public final class TestModConfig implements ConfigData {
 			}
 		}
 	}
-
-	@TOMLConfigSerializer.Comment("Client-sided options.")
-	@ConfigEntry.Category("client")
-	@ConfigEntry.Gui.TransitiveObject
-	public Client client = new Client();
 
 	@TOMLConfigSerializer.Comment("Miscellaneous options.")
 	@ConfigEntry.Category("misc")

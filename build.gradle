@@ -14,7 +14,6 @@ ext {
 	clothConfigVersion = "4.8.3"
 	autoConfigVersion = "3.3.1"
 	includeClothConfig = false
-	cottonClientCommandsVersion = "1.0.1+1.16-rc1"
 	nightConfigVersion = "3.6.3"
 }
 

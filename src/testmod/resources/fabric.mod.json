@@ -20,9 +20,6 @@
 		],
 		"modmenu": [
 			"com.therandomlabs.autoconfigtoml.testmod.TestModModMenuEntryPoint"
-		],
-		"cotton-client-commands": [
-			"com.therandomlabs.autoconfigtoml.testmod.TestModClientCommands"
 		]
 	},
 	"mixins": [],
@@ -32,7 +29,6 @@
 		"minecraft": "1.16.x"
 	},
 	"suggests": {
-		"cotton-client-commands": "^1.0.0",
 		"modmenu": "*"
 	}
 }
